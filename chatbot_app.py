@@ -14,7 +14,7 @@ from tkinter import *
 intents = json.loads(open('intents.json').read())
 words = pickle.load(open('words.pkl','rb'))
 classes = pickle.load(open('classes.pkl','rb'))
-model = load_model('chatbot_model.h5')
+model = load_model('trained_chatbot_model.h5')
 
 
 # function that tokenizes, lemmatizes, and lowercases an input sentence
@@ -90,7 +90,7 @@ def send():
         ChatLog.config(foreground="#442265", font=("Verdana", 12 ))
 
         res = chatbot_response(msg)
-        ChatLog.insert(END, "Bot: " + res + '\n\n')
+        ChatLog.insert(END, "Psychiatrist: " + res + '\n\n')
 
         ChatLog.config(state=DISABLED)
         ChatLog.yview(END)
@@ -98,7 +98,7 @@ def send():
 
 # User interface
 base = Tk()
-base.title("Hello")
+base.title("Psychiatrist ChatBot")
 base.geometry("400x500")
 base.resizable(width=FALSE, height=FALSE)
 
@@ -115,7 +115,7 @@ SendButton = Button(base, font=("Verdana",12,'bold'), text="Send", width="12", h
 
 # create the box to enter message
 EntryBox = Text(base, bd=0, bg="white",width="29", height="5", font="Arial")
-#EntryBox.bind("<Return>", send)
+EntryBox.bind("<Return>", send)
 
 # place all components on the screen
 scrollbar.place(x=376,y=6, height=386)
