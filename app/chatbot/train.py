@@ -6,7 +6,7 @@ import pickle
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
-from tensorflow.keras.optimizers import SGD
+import tensorflow.keras.optimizers as SGD
 import random
 
 # Initialize and load the json file
@@ -14,7 +14,7 @@ words=[]
 classes = []
 documents = []
 ignore_words = ['?', '!']
-data_file = open('intents.json').read()
+data_file = open('data/intents.json').read()
 intents = json.loads(data_file)
 
 # Add the patterns and their respective classes to the following arrays
@@ -49,8 +49,8 @@ print (len(classes), "classes", classes)
 print (len(words), "unique lemmatized words", words)
 
 # write all the words and unique classes to their own pickle files for later use
-pickle.dump(words,open('words.pkl','wb'))
-pickle.dump(classes,open('classes.pkl','wb'))
+pickle.dump(words, open('data/words.pkl', 'wb'))
+pickle.dump(classes, open('data/classes.pkl', 'wb'))
 
 
 # initialize the training data
@@ -103,6 +103,6 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy
 
 # fitting and saving the model 
 hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
-model.save('trained_chatbot_model.h5', hist)
+model.save('models/trained_chatbot_model.h5', hist)
 
 print("model created")

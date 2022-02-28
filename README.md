@@ -4,7 +4,19 @@
 
 ------
 
-###Local Environment Setup
+### Local Environment Setup
+
+#### Install Dependencies
+
+`pip install nltk`
+
+`pip install numpy`
+
+`pip install Flask`
+
+`pip install keras`
+
+`pip install tensorflow`
 
 When first running the program, it may ask you to download certain NTLK packages. The only way I found I could download them was by running the code below:
 
@@ -22,6 +34,22 @@ else:
 nltk.download()
 ```
 
-
-
 Link to source can be found here: https://stackoverflow.com/questions/38916452/nltk-download-ssl-certificate-verify-failed
+
+#### Start Flask app
+
+From the root project directory, run:
+
+`export FLASK_APP=app`
+
+`export FLASK_ENV=development`
+
+`flask run`
+
+#### Train ChatBot
+
+To train the chatbot you can run the file `app/chatbot/train.py`
+
+#### Use ChatBot
+
+To use the chatbot you can run the file `app/chatbot/chatbot_app.py`

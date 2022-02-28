@@ -11,10 +11,10 @@ import tkinter                                  # used to build user interface
 from tkinter import *
 
 # load the trained model and pickle files
-intents = json.loads(open('intents.json').read())
-words = pickle.load(open('words.pkl','rb'))
-classes = pickle.load(open('classes.pkl','rb'))
-model = load_model('trained_chatbot_model.h5')
+intents = json.loads(open('data/intents.json').read())
+words = pickle.load(open('data/words.pkl', 'rb'))
+classes = pickle.load(open('data/classes.pkl', 'rb'))
+model = load_model('models/trained_chatbot_model.h5')
 
 
 # function that tokenizes, lemmatizes, and lowercases an input sentence
