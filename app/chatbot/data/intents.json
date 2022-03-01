@@ -81,7 +81,7 @@
     },
     { "tag": "major_depression", 
         "patterns": ["I am feeling lack of motivation", "I have a loss of interest", "I have a loss of passion", "loss of attention", "I am feeling a  loss of pleasure", "I am feeling numb", "I have intense feelings  of sadness", "I feel sad", "I have feelings of low mood", "I am getting a lack of sleep", "I am oversleeping", "My muscles feel fatigued" , "My muscle feel sore", "I have a loss of energy", "I am always feeling tired", "I feel unmotivated", "I have brain fog", "I am fidgety", "I am feeling sluggishness", "I think about suicide", "I have thoughts of death", "I am planning for suicide", "I am gaining weight", "I am lossing weight", "Weight loss", "change in appetite", "increase in appetite", "decrease in appetite", "I have feelings of worthlessness", "I feel worthless", "I feel  hopeless", "feelings of guilt", "I am feeling irritable", "I have feelings of emptiness", "excessive crying", "I am crying lots", "I am getting a lack of rest", "I am always tired"], 
-        "responses": ["You might be depressed", "I'm really sorry to hear that you are going through this. I think you might be experiencing depression. Are you OK right now?", "I'm really sorry to hear that you are going through this but I am here for you. I think you might be depressed. This is what you can do about it"], 
+        "responses": ["You might be depressed", "I'm really sorry to hear that you are going through this. I think you might be experiencing depression.", "I'm really sorry to hear that you are going through this but I am here for you. I think you might be depressed."], 
         "context": [""]
     },
     { "tag": "positive_hobby", 

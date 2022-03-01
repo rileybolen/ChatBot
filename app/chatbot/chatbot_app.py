@@ -11,10 +11,11 @@ import tkinter                                  # used to build user interface
 from tkinter import *
 
 # load the trained model and pickle files
-intents = json.loads(open('data/intents.json').read())
-words = pickle.load(open('data/words.pkl', 'rb'))
-classes = pickle.load(open('data/classes.pkl', 'rb'))
-model = load_model('models/trained_chatbot_model.h5')
+intents = json.loads(open('app/chatbot/data/intents.json').read())
+model = load_model('app/chatbot/models/trained_chatbot_model.h5')
+words = pickle.load(open('app/chatbot/data/words.pkl', 'rb'))
+classes = pickle.load(open('app/chatbot/data/classes.pkl', 'rb'))
+
 
 
 # function that tokenizes, lemmatizes, and lowercases an input sentence
@@ -47,12 +48,12 @@ def bow(sentence, words, show_details=True):
 def predict_class(sentence, model):
     
     # gets bag of words and predicts classes
-    p = bow(sentence, words,show_details=False)
-    res = model.predict(np.array([p]))[0]
+    bag = bow(sentence, words,show_details=False)
+    res = model.predict(np.array([bag]))[0]
    
     # filters out class predictions that fall beneath a certain threshold
-    ERROR_THRESHOLD = 0.25
-    results = [[i,r] for i,r in enumerate(res) if r>ERROR_THRESHOLD]
+    THRESHOLD = 0.25
+    results = [[i,r] for i,r in enumerate(res) if r>THRESHOLD]
    
     # sort by strength of probability
     results.sort(key=lambda x: x[1], reverse=True)
@@ -98,28 +99,28 @@ def send():
 
 # User interface
 base = Tk()
-base.title("Psychiatrist ChatBot")
+base.title("Psychiatrist Chatbot")
 base.geometry("400x500")
 base.resizable(width=FALSE, height=FALSE)
 
-# create chat window
+# create chatbot window
 ChatLog = Text(base, bd=0, bg="white", height="8", width="50", font="Arial",)
 ChatLog.config(state=DISABLED)
 
 # bind scrollbar to Chat window
-scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="heart")
+scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="circle")
 ChatLog['yscrollcommand'] = scrollbar.set
 
 # create button to send message
-SendButton = Button(base, font=("Verdana",12,'bold'), text="Send", width="12", height=5, bd=0, bg="#32de97", activebackground="#3c9d9b",fg='#ffffff', command=send)
+SendButton = Button(base, font=("Arial",14,'bold'), text="Send", width="12", height=5, bd=0, bg="#fe6f5e", activebackground="#3c9d9b",fg='#ffffff', command=send)
 
 # create the box to enter message
 EntryBox = Text(base, bd=0, bg="white",width="29", height="5", font="Arial")
 EntryBox.bind("<Return>", send)
 
-# place all components on the screen
-scrollbar.place(x=376,y=6, height=386)
+# place all the components on the screen
 ChatLog.place(x=6,y=6, height=386, width=370)
+scrollbar.place(x=376,y=6, height=386)
 EntryBox.place(x=128, y=401, height=90, width=265)
 SendButton.place(x=6, y=401, height=90)
 
