@@ -12,8 +12,6 @@
 
 `pip install numpy`
 
-`pip install Flask`
-
 `pip install keras`
 
 `pip install tensorflow`
@@ -36,15 +34,6 @@ nltk.download()
 
 Link to source can be found here: https://stackoverflow.com/questions/38916452/nltk-download-ssl-certificate-verify-failed
 
-#### Start Flask app
-
-From the root project directory, run:
-
-`export FLASK_APP=app`
-
-`export FLASK_ENV=development`
-
-`flask run`
 
 #### Train ChatBot
 
