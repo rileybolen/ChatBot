@@ -19,6 +19,7 @@
 `pip install spacy`
 
 download spacy model
+
 `python -m spacy download en_core_web_sm`
 
 When first running the program, it may ask you to download certain NTLK packages. The only way I found I could download them was by running the code below:

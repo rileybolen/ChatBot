@@ -19,8 +19,8 @@ words = pickle.load(open('app/chatbot/data/words.pkl', 'rb'))
 classes = pickle.load(open('app/chatbot/data/classes.pkl', 'rb'))
 
 # spacy 'brain'
-nlp = spacy.load("en_core_web_sm")
-nlp.add_pipe("merge_entities")
+nlp = spacy.load('en_core_web_sm')
+nlp.add_pipe('merge_entities')
 
 # function that tokenizes, lemmatizes, and lowercases an input sentence
 def clean_up_sentence(sentence):
@@ -32,7 +32,7 @@ def clean_up_sentence(sentence):
 def ner(sentence):
     doc = nlp(sentence)
     sen = " ".join([t.text if not t.ent_type_ else t.ent_type_ for t in doc])
-    return sen.replace("PERSON", "John").replace("GPE", "Canada").replace("ORG", "Microsoft").replace("CARDINAL", "three")
+    return sen.replace('PERSON', 'John').replace('GPE', 'Canada').replace('ORG', 'Microsoft').replace('CARDINAL', 'three')
 
 
 # function that returns a bag of words for the input sentence 
