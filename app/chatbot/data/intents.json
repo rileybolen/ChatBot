@@ -159,5 +159,20 @@
         "patterns": ["bye", "goodbye", "farewell", "I'm leaving", "peace out"],
         "responses": ["Hope you feel better! Goodbye."],
         "context": [""]
+    },
+    { "tag": "hallucinations",
+        "patterns": ["I have been seeing things", "I have been having hallucinations", "I have been hearing things", "I have been hearing voices", ""],
+        "responses": ["Okay. Have you noticed a decrease in organization in your life? (ex. extremely messy house, massivedly decreased self-care, unable to do tasks you were before"],
+        "context": [""]
+    },
+    { "tag": "positive disorganization",
+        "patterns": ["I have noticed a decrease in organization", "I have been disorganized", "I've been disorganized", "Yes", "Yes, I have", "I've been more disorganized recently", "I have been extra disorganized"],
+        "responses": ["Ok. Hallucinations and disorganization are common symptoms of schizophrenia. Please follow this link for more information, but you must see a doctor in order to get tested: https://www.nami.org/About-Mental-Illness/Mental-Health-Conditions/Schizophrenia"],
+        "context": [""]
+    },
+    {"tag": "negative disorganization",
+        "patterns": ["I have not been disorganized", "I've not been disorganized", "No, I have not noticed a decrease in organization", "No, my organization has not decreased", "No, I have not", "No, I haven't"],
+        "responses": ["You most likely don't have schizophrenia. But you should still see a doctor to determine the source of your hallucinations, please see your family doctor."],
+        "context": [""]
     }
 ]}
