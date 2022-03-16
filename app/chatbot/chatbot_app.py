@@ -9,6 +9,8 @@ import json
 import random
 import tkinter                                  # used to build user interface
 from tkinter import *
+import spacy
+from spacy import displacy
 
 
 # load the trained model and pickle files
@@ -16,6 +18,11 @@ intents = json.loads(open('app/chatbot/data/intents.json').read())
 model = load_model('app/chatbot/models/trained_chatbot_model.h5')
 words = pickle.load(open('app/chatbot/data/words.pkl', 'rb'))
 classes = pickle.load(open('app/chatbot/data/classes.pkl', 'rb'))
+
+
+# spacy 'brain'
+nlp = spacy.load('en_core_web_sm')
+nlp.add_pipe('merge_entities')
 
 
 # POS Mapper Function (used to ensure POS compatibility with lemmatizer)
@@ -37,12 +44,21 @@ def clean_up_sentence(sentence):
     sentence_words = [lemmatizer.lemmatize(word.lower(), get_pos(word.lower())) for word in sentence_words]
     return sentence_words
 
+# named entity recognition
+def ner(sentence):
+    doc = nlp(sentence)
+    sen = " ".join([t.text if not t.ent_type_ else t.ent_type_ for t in doc])
+    return sen.replace('PERSON', 'John').replace('GPE', 'Canada').replace('ORG', 'Microsoft').replace('CARDINAL', 'three')
+
 
 # function that returns a bag of words for the input sentence 
 def bow(sentence, words, show_details=True):
     
+    #search for difficult to recognize named entities
+    sentence_words = ner(sentence)
+    
     # tokenize the pattern/sentence
-    sentence_words = clean_up_sentence(sentence)
+    sentence_words = clean_up_sentence(sentence_words)
     
     # create bag of words
     bag = [0]*len(words) 
