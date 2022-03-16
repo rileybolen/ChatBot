@@ -1,5 +1,6 @@
 # Imports
 import nltk
+from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 import json
 import pickle
@@ -8,6 +9,17 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from tensorflow.keras.optimizers import SGD
 import random
+
+# POS Mapper Function (used to ensure POS compatibility with lemmatizer)
+def get_pos(word):
+    tag = nltk.pos_tag([word])
+    tag = tag[0][1][0].upper()
+    dict = {"J": wordnet.ADJ,
+            "N": wordnet.NOUN,
+            "V": wordnet.VERB,
+            "R": wordnet.ADV }
+
+    return dict.get(tag, wordnet.NOUN)
 
 # Initialize and load the json file
 words=[]
@@ -35,7 +47,7 @@ for intent in intents['intents']:
 
 # lemmatize and lowercase each word, remove duplicates
 lemmatizer = WordNetLemmatizer()
-words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words]
+words = [lemmatizer.lemmatize(w.lower(), get_pos(w.lower())) for w in words if w not in ignore_words]
 words = sorted(list(set(words)))
 
 # sort classes (duplicates don't need to be removed because they are already unique)
@@ -64,7 +76,7 @@ for doc in documents:
     # list of tokenized words for the particular pattern
     pattern_words = doc[0]
     # lemmatize each word - in attempt to represent related words
-    pattern_words = [lemmatizer.lemmatize(word.lower()) for word in pattern_words]
+    pattern_words = [lemmatizer.lemmatize(word.lower(), get_pos(word.lower())) for word in pattern_words]
     # create our bag of words array with 1, if word match found in current pattern
     for w in words:
         if w in pattern_words:
