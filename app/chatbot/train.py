@@ -56,10 +56,6 @@ def get_synonym(words):
             syns.append(l.name())
         return syns
 
-
-# lemmatize and lowercase each word, remove duplicates
-lemmatizer = WordNetLemmatizer()
-
 # gets the synonyms of a word in words
 for word in words:
         # print(word)
@@ -71,6 +67,9 @@ for word in words:
 for k in synonyms:
     words.append(k)
 
+
+# lemmatize and lowercase each word, remove duplicates
+lemmatizer = WordNetLemmatizer()
 words = [lemmatizer.lemmatize(w.lower(), get_pos(w.lower())) for w in words if w not in ignore_words]
 words = sorted(list(set(words)))
 
