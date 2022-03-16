@@ -66,3 +66,9 @@ The Synonym Recognation function uses WordNet (collection of words and vocabular
 
 <img width="365" src="https://user-images.githubusercontent.com/46100533/158677468-2dcbd50c-1b10-4131-ae78-151f4cc01abd.png">
 
+
+#### Named Entity Recognition
+
+Named Entity Recognition is implemented through [spaCy](spacy.io) (it can also be installed using pip for python). It allows the program to differentiate between different named objects, such as Organizations, People, Geo-Political Entities, Quantities, and many more. The chatbot will mainly make use of this by identifying organizations when asking about work habits. The chabot is able to use the context of the sentence and pretrained knowledge to determine that 'K2' and the 'UN' are both organizations, and favour dialogues responding to work:
+
+<img width="365" src="https://user-images.githubusercontent.com/77344004/158700501-0cc9f567-bd46-4411-a240-c04c67ab2a18.png">
