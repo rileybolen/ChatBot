@@ -53,3 +53,12 @@ The POS (Parts of Speech) tagger function generates a tag (noun, verb, adverb, a
 
 <img width="365" alt="Screen Shot 2022-03-15 at 4 06 19 PM" src="https://user-images.githubusercontent.com/97714788/158486817-fb65ef40-5d77-4530-8a58-9cf0604befb8.png">
 
+#### Synonym Recognition
+
+The Synonym Recognation function uses WordNet (collection of words and vocabulary) to find synonyms of the words used in our json file. These synonyms get added to the words.pk file which are later used to find the similar words of the training data. For example, the chatbot will now understand sad as also pitiful or distressing and answer appropriately.
+
+![image](https://user-images.githubusercontent.com/46100533/158677086-1d4d6bcc-546c-4003-8853-03dde645f646.png)
+
+
+
+
