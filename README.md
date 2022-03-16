@@ -48,3 +48,21 @@ To train the chatbot you can run the file `app/chatbot/train.py`
 #### Use ChatBot
 
 To use the chatbot you can run the file `app/chatbot/chatbot_app.py`
+
+------
+
+### List of Features (for A3) 
+
+#### POS Tagger
+
+The POS (Parts of Speech) tagger function generates a tag (noun, verb, adverb, adjective) for every word that gets passed to it. The tag gets passed to the lammetizer function, along with the word, which will then lammetize the word appropriately. Previously, the lammetizer would default every word as a noun. For example, our chatbot will now be able to identify between an "accident" (noun) and "accidentally" (adverb). 
+
+<img width="365" alt="Screen Shot 2022-03-15 at 4 06 19 PM" src="https://user-images.githubusercontent.com/97714788/158486817-fb65ef40-5d77-4530-8a58-9cf0604befb8.png">
+
+
+#### Synonym Recognition
+
+The Synonym Recognation function uses WordNet (collection of words and vocabulary) to find synonyms of the words used in our json file. These synonyms get added to the words.pk file which are later used to find the similar words of the training data. For example, the chatbot will now understand sad as also pitiful or distressing and answer appropriately.
+
+<img width="365" src="https://user-images.githubusercontent.com/46100533/158677468-2dcbd50c-1b10-4131-ae78-151f4cc01abd.png">
+

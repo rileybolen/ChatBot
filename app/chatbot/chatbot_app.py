@@ -1,7 +1,7 @@
 # imports
 import nltk                                     # used to tokenize and lemmatize sentences
+from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
-lemmatizer = WordNetLemmatizer()
 import pickle
 import numpy as np
 from keras.models import load_model             # used as the deep learning model to handle bag of words
@@ -12,20 +12,36 @@ from tkinter import *
 import spacy
 from spacy import displacy
 
+
 # load the trained model and pickle files
 intents = json.loads(open('app/chatbot/data/intents.json').read())
 model = load_model('app/chatbot/models/trained_chatbot_model.h5')
 words = pickle.load(open('app/chatbot/data/words.pkl', 'rb'))
 classes = pickle.load(open('app/chatbot/data/classes.pkl', 'rb'))
 
+
 # spacy 'brain'
 nlp = spacy.load('en_core_web_sm')
 nlp.add_pipe('merge_entities')
 
+
+# POS Mapper Function (used to ensure POS compatibility with lemmatizer)
+def get_pos(word):
+    tag = nltk.pos_tag([word])
+    tag = tag[0][1][0].upper()
+    dict = {"J": wordnet.ADJ,
+            "N": wordnet.NOUN,
+            "V": wordnet.VERB,
+            "R": wordnet.ADV }
+
+    return dict.get(tag, wordnet.NOUN)
+
+
 # function that tokenizes, lemmatizes, and lowercases an input sentence
 def clean_up_sentence(sentence):
+    lemmatizer = WordNetLemmatizer()
     sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
+    sentence_words = [lemmatizer.lemmatize(word.lower(), get_pos(word.lower())) for word in sentence_words]
     return sentence_words
 
 # named entity recognition
