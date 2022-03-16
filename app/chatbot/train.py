@@ -4,6 +4,7 @@ from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 import json
 import pickle
+from nltk.corpus import wordnet
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
@@ -24,6 +25,7 @@ def get_pos(word):
 # Initialize and load the json file
 words=[]
 classes = []
+synonyms = []
 documents = []
 ignore_words = ['?', '!']
 data_file = open('app/chatbot/data/intents.json').read()
@@ -44,9 +46,31 @@ for intent in intents['intents']:
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
+# function to return a list of synonyms of a given word
+def get_synonym(words):
+    syns = []
+    if len(words) == 0: # if blank is passed, return nothing
+        return
+    for syn in wordnet.synsets(words.lower()):
+        for l in syn.lemmas():
+            syns.append(l.name())
+        return syns
+
 
 # lemmatize and lowercase each word, remove duplicates
 lemmatizer = WordNetLemmatizer()
+
+# gets the synonyms of a word in words
+for word in words:
+        # print(word)
+    for syn in wordnet.synsets(word.lower()):
+        for l in syn.lemmas():
+            synonyms.append(l.name())
+
+# add synonyms to words
+for k in synonyms:
+    words.append(k)
+
 words = [lemmatizer.lemmatize(w.lower(), get_pos(w.lower())) for w in words if w not in ignore_words]
 words = sorted(list(set(words)))
 
@@ -79,7 +103,7 @@ for doc in documents:
     pattern_words = [lemmatizer.lemmatize(word.lower(), get_pos(word.lower())) for word in pattern_words]
     # create our bag of words array with 1, if word match found in current pattern
     for w in words:
-        if w in pattern_words:
+        if w in pattern_words or (len(pattern_words) > 0 and w in get_synonym(pattern_words[len(pattern_words)-1])):
             bag.append(1) 
         else:
              bag.append(0)
