@@ -180,7 +180,14 @@
         "responses": ["Unfortunately, I cannot talk about weather. Please ask me to get to know you, or tell me mental health symptoms you are experiencing"],
         "context": [""]
     },
-    {"tag": ""
-        
+    { "tag": "POS_example_noun",
+        "patterns": ["I dropped my glasses at the accident"], 
+        "responses": ["Oh no! What accident?"],
+        "context":[""]
+    },
+    { "tag": "POS_example_adverb",
+        "patterns": ["I accidentally dropped my glasses"], 
+        "responses": ["Oh no! Pick them up!"],
+        "context":[""]
     }
 ]}

@@ -1,17 +1,31 @@
 # Imports
 import nltk
+from nltk.corpus import wordnet
 from nltk.stem import WordNetLemmatizer
 import json
 import pickle
+from nltk.corpus import wordnet
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from tensorflow.keras.optimizers import SGD
 import random
 
+# POS Mapper Function (used to ensure POS compatibility with lemmatizer)
+def get_pos(word):
+    tag = nltk.pos_tag([word])
+    tag = tag[0][1][0].upper()
+    dict = {"J": wordnet.ADJ,
+            "N": wordnet.NOUN,
+            "V": wordnet.VERB,
+            "R": wordnet.ADV }
+
+    return dict.get(tag, wordnet.NOUN)
+
 # Initialize and load the json file
 words=[]
 classes = []
+synonyms = []
 documents = []
 ignore_words = ['?', '!']
 data_file = open('app/chatbot/data/intents.json').read()
@@ -32,10 +46,31 @@ for intent in intents['intents']:
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
+# function to return a list of synonyms of a given word
+def get_synonym(words):
+    syns = []
+    if len(words) == 0: # if blank is passed, return nothing
+        return
+    for syn in wordnet.synsets(words.lower()):
+        for l in syn.lemmas():
+            syns.append(l.name())
+        return syns
+
+# gets the synonyms of a word in words
+for word in words:
+        # print(word)
+    for syn in wordnet.synsets(word.lower()):
+        for l in syn.lemmas():
+            synonyms.append(l.name())
+
+# add synonyms to words
+for k in synonyms:
+    words.append(k)
+
 
 # lemmatize and lowercase each word, remove duplicates
 lemmatizer = WordNetLemmatizer()
-words = [lemmatizer.lemmatize(w.lower()) for w in words if w not in ignore_words]
+words = [lemmatizer.lemmatize(w.lower(), get_pos(w.lower())) for w in words if w not in ignore_words]
 words = sorted(list(set(words)))
 
 # sort classes (duplicates don't need to be removed because they are already unique)
@@ -64,10 +99,10 @@ for doc in documents:
     # list of tokenized words for the particular pattern
     pattern_words = doc[0]
     # lemmatize each word - in attempt to represent related words
-    pattern_words = [lemmatizer.lemmatize(word.lower()) for word in pattern_words]
+    pattern_words = [lemmatizer.lemmatize(word.lower(), get_pos(word.lower())) for word in pattern_words]
     # create our bag of words array with 1, if word match found in current pattern
     for w in words:
-        if w in pattern_words:
+        if w in pattern_words or (len(pattern_words) > 0 and w in get_synonym(pattern_words[len(pattern_words)-1])):
             bag.append(1) 
         else:
              bag.append(0)
