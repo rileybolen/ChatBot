@@ -175,11 +175,6 @@
         "responses": ["You most likely don't have schizophrenia. But you should still see a doctor to determine the source of your hallucinations, please see your family doctor."],
         "context": [""]
     },
-    {"tag": "weather",
-        "patterns": ["What is the weather like?", "What is the weather forecast", "What's the weather forecast", "What is the weather tommorow"],
-        "responses": ["Unfortunately, I cannot talk about weather. Please ask me to get to know you, or tell me mental health symptoms you are experiencing"],
-        "context": [""]
-    },
     { "tag": "POS_example_noun",
         "patterns": ["I dropped my glasses at the accident"], 
         "responses": ["Oh no! What accident?"],
@@ -189,5 +184,31 @@
         "patterns": ["I accidentally dropped my glasses"], 
         "responses": ["Oh no! Pick them up!"],
         "context":[""]
+    },
+    {"tag": "weather",
+        "patterns": ["What is the weather like?", "What is the weather forecast", "What's the weather forecast", "What is the weather tommorow"],
+        "responses": ["Unfortunately, I cannot talk about weather. Please ask me to get to know you, or tell me mental health symptoms you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "sports",
+        "patterns": ["What was the score last night", "Do you know what the score was last night", "Did you see the gam elast night", "Can you tell me the score from last night", "Who won the game last night"],
+        "responses": ["I'm sorry, I am not programmed to discuss sports. Please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "math",
+        "patterns": ["Can you help with my math homework", "I need help with my math homework", "do you know math", "can you do math", "can you help with math",
+        "do you know discrete mathematics"],
+        "responses": ["Unfortunately, I cannot talk about mathematics. Please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "cars",
+        "patterns": ["do you know anything about cars", "can you help me with my engine problems", "can you help fix cars", "can you help fix an engine", "do you know much about cars", "can you help me with my car"],
+        "responses": ["I'm sorry, I cannot talk about cars, please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "climate change",
+        "patterns": ["can you tell me about global warming", "what do you know about global warming", "can you tell me about climate change", "what do you know about climate change", "have you heard about the icebergs melting"],
+        "responses": ["Climate change is a lie. Please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
     }
 ]}
