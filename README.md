@@ -53,6 +53,20 @@ To use the chatbot you can run the file `app/chatbot/chatbot_app.py`
 
 ### List of Features (for A3) 
 
+#### Out of topic question handler
+
+The bot has been updated to handle topics that are out of its range, and respond in a way that directs the conversation back to known conversation areas.
+
+<img width="365" src="https://user-images.githubusercontent.com/77344004/159347118-3acbb02b-7fa1-46a6-92b5-55f6d9fd20d5.png">
+
+
+#### additional conversation topic: Schizophrenia
+
+Several conversation structures which indicate symptoms of schizophrenia have been added to the bots repertoire, in particular hallucinations and general disorganization. There is also referal to proper health resources if the bot detects these symptoms.
+
+<img width="365" src="https://user-images.githubusercontent.com/77344004/159347709-8e5e0503-2af0-4928-8c67-cf9e8affbe94.png">
+
+
 #### POS Tagger
 
 The POS (Parts of Speech) tagger function generates a tag (noun, verb, adverb, adjective) for every word that gets passed to it. The tag gets passed to the lammetizer function, along with the word, which will then lammetize the word appropriately. Previously, the lammetizer would default every word as a noun. For example, our chatbot will now be able to identify between an "accident" (noun) and "accidentally" (adverb). 
@@ -69,6 +83,6 @@ The Synonym Recognation function uses WordNet (collection of words and vocabular
 
 #### Named Entity Recognition
 
-Named Entity Recognition is implemented through [spaCy](spacy.io) (it can also be installed using pip for python). It allows the program to differentiate between different named objects, such as Organizations, People, Geo-Political Entities, Quantities, and many more. The chatbot will mainly make use of this by identifying organizations when asking about work habits. The chabot is able to use the context of the sentence and pretrained knowledge to determine that 'K2' and the 'UN' are both organizations, and favour dialogues responding to work:
+Named Entity Recognition is implemented through [spaCy](https://spacy.io) (it can also be installed using pip for python). It allows the program to differentiate between different named objects, such as Organizations, People, Geo-Political Entities, Quantities, and many more. The chatbot will mainly make use of this by identifying organizations when asking about work habits. The chabot is able to use the context of the sentence and pretrained knowledge to determine that 'K2' and the 'UN' are both organizations, and favour dialogues responding to work:
 
 <img width="365" src="https://user-images.githubusercontent.com/77344004/158700501-0cc9f567-bd46-4411-a240-c04c67ab2a18.png">
