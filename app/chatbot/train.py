@@ -54,7 +54,7 @@ def get_synonym(words):
     for syn in wordnet.synsets(words.lower()):
         for l in syn.lemmas():
             syns.append(l.name())
-        return syns
+    return syns
 
 # gets the synonyms of a word in words
 for word in words:
