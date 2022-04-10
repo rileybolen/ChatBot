@@ -1,0 +1,214 @@
+{ "intents": [
+    { "tag": "greeting",
+        "patterns": ["Hi there", "Hello", "How are you", "Hey", "Hi", "Is anyone there", "Hola", "Yo"],
+        "responses": ["Hello, how is your day going?", "Hi! How is your day going?", "Good to see you! How is your day going?", "Hi! How are you today?"],
+        "context": [""]
+    },
+    { "tag": "day_positive",
+        "patterns": ["My day is going well", "I am doing great!", "My day was awesome", "Good"], 
+        "responses": ["That's good!", "Wonderful to hear!", "Glad to hear it!", "Happy to hear that!"],
+        "context":[""]
+    },
+    { "tag": "how_are_you" ,
+        "patterns": ["How are you?", "How are you doing?", "How about you, how was your day?", "How was your day?", "How's it going"],
+        "responses": ["I'm doing great! Thank you", "So far so good! Thanks.", "I'm doing well! Thank you.", "I'm doing great!"],
+        "context":[""]
+    },
+    { "tag": "what_can_you_do",
+        "patterns": ["What can you do?", "What do you do?", "How do you work?"], 
+        "responses": ["I am good at small talk and can try to diagnose a couple of common disorders.", "I can do some small talk and offer support for mental health!"],
+        "context":[""]
+    },
+    { "tag": "symptom_sad", 
+        "patterns": ["I have been feeling kind of sad lately, and I'm not sure what it means.", "I've been feeling sad lately", "I feel sad", "I feel depressed", "I've been feeling sad"], 
+        "responses": ["I can help you talk about that. Can you please tell me a little bit more?", "I'm sorry to hear that. Maybe you can go into that a little bit more?"],
+        "context":[""]
+    },
+    { "tag": "where_do_we_start", 
+        "patterns": ["How do we start?", "Where do we start?", "How does this work?"], 
+        "responses": ["Let's get to know each other a bit first if that's okay?", "I think getting to know each other a bit first will be good if that's okay?"],
+        "context":[""]
+    },
+    { "tag": "know_each_other", 
+        "patterns": ["Yes let's get to know each other a little bit", "Okay sure, let's get to know each other a little bit", "Okay, let's get to know each other"], 
+        "responses": ["Great! How old are you", "Sounds good. How old are you?", "Perfect. How old are you?", "How old are you?"],
+        "context":[""]
+    },
+    { "tag": "age", 
+        "patterns": ["I am 25 years old", "I am %n years old"], 
+        "responses": ["Okay, where do you work?", "Excellent. What do you do for a living?", "Okay. What is your occupation?"],
+        "context":[""]
+    },
+    { "tag": "occupation", 
+        "patterns": ["I am a firefighter", "I am a trucker", "I am a student", "I'm a doctor", "I'm an engineer", "I'm an occupational therapist", "Yes, I work at McDonalds", "Yes, I'm a computer programmer"], 
+        "responses": ["Interesting. Do you enjoy your work?", "Excellent. Do you like what you do?", "Okay. Does it provide you with meaning?"],
+        "context":[""]
+    },
+    { "tag": "positive_work", 
+        "patterns": ["Yes, I enjoy my work", "Yes, I love my work", "I love my work", "My work provides me with meaning", "Yes I enjoy what I do for work", "I love what I do for work"], 
+        "responses": ["That's great to hear! How many hours a week do you work?", "I'm glad to hear you enjoy your work. How many hours a week do you work?", "It's good you like what you do! How often do you work?"],
+        "context":[""]
+    },
+    { "tag": "work_response_hours", 
+        "patterns": ["I work 40 hours a week", "I work 5 days a week", "I work a lot during the week", " I mostly work in the mornings", "I work in the week and sometimes part time", "I work a salary job", "I work 8 hours a day, 5 days a week"], 
+        "responses": ["Okay it sounds like you're getting a decent amount of work in. Can you tell me, are you close with your immediate family?", "Okay perfect sounds like work is going okay then! Are you close with any members of your family?", "Okay. Are you close with any members of your family?"],
+        "context":[""]
+    }, 
+    { "tag": "positive_family", 
+        "patterns": ["Yes I am close with my family", "I am a close with my father", "I am close with my brothers.", "I am close with my sisters", " I am close with my siblings", "I am close with my mom and dad", "I am close with my mom", "I am close with my whole family"], 
+        "responses": ["It's great to hear that you are close with your family because that is so important! Are you close with your friends? Can you list them?", "It's great to hear that you're close to your family! How about your friendships, maybe you can list off five of your closest friends?", "I'm glad to hear that you are close with members of your family. Let's talk about your friends for a minute. Maybe you can list off five of your closest friends?"],
+        "context":[""]
+    },
+    { "tag": "positive_friends", 
+        "patterns": ["I have three close friends. Their names are Jeff, Thomas, and Joe", "I have five close friends, they are Sally, Amie, Thomas, Jeffery, and Sigmund", "I have a few close friends! They are sally, Joe, Bob, Mary, and Jeff!"], 
+        "responses": ["Okay great! It sounds like you have a decent support network then. Are you in a romantic relationship?", "Thats awesome sounds like you have some decent friends too! Are you in a romantic relationship?", "Oh Mr. Popular! Are you in a romantic relationship?"],
+        "context":[""]
+    },
+    { "tag": "positive_relationship_status", 
+        "patterns": ["Yes I have a significant other ", "Yes I am married", "Yes I have a girlfriend", "Yes I have a boyfriend", "Yes I have a wife", "Yes I have a husband"], 
+        "responses": ["Okay, perfect. How long have you been in a relationship for?", "Okay great! How long have you been in this relationship for?",  "Good for you! How long have you been in this relationship for?", "Okay. How long have you been seing your significant other for?"],
+        "context":[""]
+    },
+    { "tag": "relationship_duration", 
+        "patterns": ["I have been in a relationship for 5 years. ", "I have been with my girlfriend for 3 months", "I have been with my boyfriend for 9 months", "I have been with my significant other for 1 years now", "I've been with my wife for 25 years", "I've only been married for about a few months now", "I've been married to my husband for 7 years now!"], 
+        "responses": ["Okay. How is your relationship going?", "Okay. Is your relationship causing any sort of problems?", "Okay. Do you enjoy being in your relationship?"],
+        "context":[""]
+    },
+    { "tag": "positive_relationship_feelings",
+        "patterns": ["My relationship is going great. I am very happy.", "No problems. My relationships has been very happy.", "No issues. I have been very happy in my relationship."],
+        "responses": ["That's wonderful. Happy to hear it! What do you do on your free time?", "That's wonderful to hear! How about your free time? Do you have any hobbies?", "I'm glad it's going well. What do you like to do on your free time?"],
+        "context":[""]
+    },
+    { "tag": "major_depression", 
+        "patterns": ["I am feeling lack of motivation", "I have a loss of interest", "I have a loss of passion", "loss of attention", "I am feeling a  loss of pleasure", "I am feeling numb", "I have intense feelings  of sadness", "I feel sad", "I have feelings of low mood", "I am getting a lack of sleep", "I am oversleeping", "My muscles feel fatigued" , "My muscle feel sore", "I have a loss of energy", "I am always feeling tired", "I feel unmotivated", "I have brain fog", "I am fidgety", "I am feeling sluggishness", "I think about suicide", "I have thoughts of death", "I am planning for suicide", "I am gaining weight", "I am lossing weight", "Weight loss", "change in appetite", "increase in appetite", "decrease in appetite", "I have feelings of worthlessness", "I feel worthless", "I feel  hopeless", "feelings of guilt", "I am feeling irritable", "I have feelings of emptiness", "excessive crying", "I am crying lots", "I am getting a lack of rest", "I am always tired"], 
+        "responses": ["You might be depressed", "I'm really sorry to hear that you are going through this. I think you might be experiencing depression.", "I'm really sorry to hear that you are going through this but I am here for you. I think you might be depressed."], 
+        "context": [""]
+    },
+    { "tag": "positive_hobby", 
+        "patterns": ["I like to go to the gym", "I like to read", "I enjoy cooking"], 
+        "responses": ["Awesome, that sounds like a healthy habit. How often do you exercise?", "That's great! Sounds like a healthy habit. Do you exercise very often?"],
+        "context":[""]
+    },
+    { "tag": "positive_exercise",
+        "patterns": ["I excercise twice a week", "I exercise 3 times a week", "I exercise 4 times a week", "I exercise 5 times a week", "I exercise 6 times a week", "I exercise every day"],
+        "responses": ["Great. How is your sleep?", "Okay, and how is your sleep?"],
+        "context": [""]        
+    },
+    { "tag": "positive_sleep",
+        "patterns": ["I get a good sleep most nights", "I sleep about 7 hours a night", "I sleep 8 hours a night", 
+        "I sleep 7.5 hours a night"],
+        "responses": ["Sounds good, and what are your eating habits like?", "That's very good. How often do you eat out?", "Awesome. How healthy would you say you eat?"],
+        "context": [""]
+    },
+    { "tag": "neutral_diet",
+        "patterns": ["I eat fast food sometimes, but mostly prepare my own meals", "Mostly healthy, but I do eat fast food sometimes"],
+        "responses": ["Okay, how much time do you spend outdoors?", "Alright, do you spend much time outdoors?", "I see, how much time do you spend outdoors?"],
+        "context": [""]
+    },
+    { "tag": "positive_sunlight",
+        "patterns": ["I spend a couple hours outside every day usually", "I usually spend a few hours outside", "I usually spend a couple hours outside every day", "I spend an hour outside most of the time"],
+        "responses": ["I see, and are you on any medications.", "Okay. Not bad. Are you on any medication?"],
+        "context": [""]
+    },
+    { "tag": "negative_medication",
+        "patterns": ["No I'm not taking any medications", "No", "I'm not on any medication", "Nope", "No I'm not on any medications"],
+        "responses": ["Alright. Have you ever seen a therapist before?", "Okay, have you seen a therapist before?"],
+        "context": [""]
+    },
+    { "tag": "negative_therapist",
+        "patterns": ["No I have not", "No", "I have not", "I haven't ever seen a therapist no"], 
+        "responses": ["Ok, can you describe how you're feeling?", "Okay. Do you mind describing some of your feelings, as to why you came here today?"],
+        "context": [""]
+    },
+    { "tag": "who_help",
+        "patterns": ["Where can I get help for this?", "Where can I go for help?", "Who can help me with this?", "Who can I see to get help for this?"],
+        "responses": ["I am not capable of referring you to a real life doctor yet, but here is a website that could direct you appropriately. https://mentalhealthweek.ca/check-in-on-your-mental-health/"],
+        "context": [""]
+    },
+    { "tag": "what_help",
+        "patterns": ["What can I do to resolve this?", "What can I do?", "What can I do to help myself?"],
+        "responses": ["Here is a website that can direct you: https://bouncebackbc.ca/"],
+        "context": [""]
+    },
+    { "tag": "anxiety",
+        "patterns": ["I'm overly anxious", "I'm really anxious", "I'm worried all the time", "I'm always tired",
+        "I'm tired all the time", "I'm tired constantly", "I can't sit still", "I'm always jumpy",
+        "I can't rest", "I'm restless", "I'm sore", "My muscles are sore", "My muscles are always sore",
+        "I can't focus", "I can't concentrate", "I'm having trouble concentrating", "I'm irritable",
+        "I'm having difficulty sleeping", "I can't sleep", "I have insomnia"],
+        "responses": ["It sounds like you may have anxiety. I am currently not capable of helping much more. In the mean time, please refer to this documentation to get more information: https://www.verywellmind.com/dsm-5-criteria-for-generalized-anxiety-disorder-1393147"],
+        "context": [""]
+    },
+    { "tag": "refuse_question",
+        "patterns": ["I really don't want to talk about that", "I don't want to talk about that",
+        "I can't talk about that", "I'm sorry I can't talk about that"],
+        "responses":  ["Ok, no problem. Do you have any hobbies?"],
+        "context": [""]
+    },
+    { "tag": "not_understood",
+        "patterns": [""],
+        "repsonses": ["Sorry, I cannot understand. Can you please rephrase that?", "Can you please rephrase that?"],
+        "context": [""]
+    },
+    { "tag": "thanks",
+        "patterns": ["Thanks", "Thank you", "Thank you very much"],
+        "responses": ["You're welcome", "No problem"],
+        "context": [""]
+    },
+    { "tag": "bye",
+        "patterns": ["bye", "goodbye", "farewell", "I'm leaving", "peace out"],
+        "responses": ["Hope you feel better! Goodbye."],
+        "context": [""]
+    },
+    { "tag": "hallucinations",
+        "patterns": ["I have been seeing things", "I have been having hallucinations", "I have been hearing things", "I have been hearing voices", ""],
+        "responses": ["Okay. Have you noticed a decrease in organization in your life? (ex. extremely messy house, massivedly decreased self-care, unable to do tasks you were before"],
+        "context": [""]
+    },
+    { "tag": "positive disorganization",
+        "patterns": ["I have noticed a decrease in organization", "I have been disorganized", "I've been disorganized", "Yes", "Yes, I have", "I've been more disorganized recently", "I have been extra disorganized"],
+        "responses": ["Ok. Hallucinations and disorganization are common symptoms of schizophrenia. Please follow this link for more information, but you must see a doctor in order to get tested: https://www.nami.org/About-Mental-Illness/Mental-Health-Conditions/Schizophrenia"],
+        "context": [""]
+    },
+    {"tag": "negative disorganization",
+        "patterns": ["I have not been disorganized", "I've not been disorganized", "No, I have not noticed a decrease in organization", "No, my organization has not decreased", "No, I have not", "No, I haven't"],
+        "responses": ["You most likely don't have schizophrenia. But you should still see a doctor to determine the source of your hallucinations, please see your family doctor."],
+        "context": [""]
+    },
+    { "tag": "POS_example_noun",
+        "patterns": ["I dropped my glasses at the accident"], 
+        "responses": ["Oh no! What accident?"],
+        "context":[""]
+    },
+    { "tag": "POS_example_adverb",
+        "patterns": ["I accidentally dropped my glasses"], 
+        "responses": ["Oh no! Pick them up!"],
+        "context":[""]
+    },
+    {"tag": "weather",
+        "patterns": ["What is the weather like?", "What is the weather forecast", "What's the weather forecast", "What is the weather tommorow"],
+        "responses": ["Unfortunately, I cannot talk about weather. Please ask me to get to know you, or tell me mental health symptoms you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "sports",
+        "patterns": ["What was the score last night", "Do you know what the score was last night", "Did you see the gam elast night", "Can you tell me the score from last night", "Who won the game last night"],
+        "responses": ["I'm sorry, I am not programmed to discuss sports. Please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "math",
+        "patterns": ["Can you help with my math homework", "I need help with my math homework", "do you know math", "can you do math", "can you help with math",
+        "do you know discrete mathematics"],
+        "responses": ["Unfortunately, I cannot talk about mathematics. Please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "cars",
+        "patterns": ["do you know anything about cars", "can you help me with my engine problems", "can you help fix cars", "can you help fix an engine", "do you know much about cars", "can you help me with my car"],
+        "responses": ["I'm sorry, I cannot talk about cars, please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    },
+    {"tag": "climate change",
+        "patterns": ["can you tell me about global warming", "what do you know about global warming", "can you tell me about climate change", "what do you know about climate change", "have you heard about the icebergs melting"],
+        "responses": ["Climate change is a lie. Please ask me to get to know you, or tell me a mental health symptom you are experiencing"],
+        "context": [""]
+    }
+]}
