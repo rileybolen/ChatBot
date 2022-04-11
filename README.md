@@ -40,6 +40,11 @@ nltk.download()
 
 Link to source can be found here: https://stackoverflow.com/questions/38916452/nltk-download-ssl-certificate-verify-failed
 
+#### Install Additional Dependencies (personal project)
+
+`pip install googletrans`
+
+`pip install wikipediaapi`
 
 #### Train ChatBot
 

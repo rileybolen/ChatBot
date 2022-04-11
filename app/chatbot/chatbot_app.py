@@ -11,6 +11,8 @@ import tkinter                                  # used to build user interface
 from tkinter import *
 import spacy
 from spacy import displacy
+from googletrans import Translator
+import wikipediaapi
 
 
 # load the trained model and pickle files
@@ -24,6 +26,10 @@ classes = pickle.load(open('app/chatbot/data/classes.pkl', 'rb'))
 nlp = spacy.load('en_core_web_sm')
 nlp.add_pipe('merge_entities')
 
+translator = Translator()
+wikipedia = wikipediaapi.Wikipedia('en')
+
+disorders = ['anxiety', 'major_depression']
 
 # POS Mapper Function (used to ensure POS compatibility with lemmatizer)
 def get_pos(word):
@@ -107,6 +113,10 @@ def getResponse(predicted_classes, intents_json):
 def chatbot_response(text):
     predicted_classes = predict_class(text, model)
     res = getResponse(predicted_classes, intents)
+    if predicted_classes[0]['class'] is in disorders:
+        page = wikipedia.page(predicted_classes[0]['class'])
+        if page.exists():
+            res += '\n\nYou can find more information about this disorder on this Wikipedia page.\n' + page.fullurl
     return res
 
 # function that acts as a send button for the user interface
@@ -115,11 +125,19 @@ def send():
     EntryBox.delete("0.0",END)
     
     if msg != '':
+        original_lang = None
+        if(translator.detect(msg).lang != 'en'):
+            translation = translator.translate(msg, dest='en')
+            msg = translation.text
+            original_lang = translation.src
+
         ChatLog.config(state=NORMAL)
         ChatLog.insert(END, "You: " + msg + '\n\n')
         ChatLog.config(foreground="#442265", font=("Verdana", 12 ))
 
         res = chatbot_response(msg)
+        if original_lang is not None:
+            res = translator.translate(msg, dest='en').text
         ChatLog.insert(END, "Psychiatrist: " + res + '\n\n')
 
         ChatLog.config(state=DISABLED)
